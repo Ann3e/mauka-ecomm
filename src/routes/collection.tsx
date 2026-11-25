@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { useMemo, useState } from "react";
 import { SlidersHorizontal, Search, X, ImagePlus, Sparkles } from "lucide-react";
@@ -10,12 +9,12 @@ import { btn } from "@/components/mauka/ui";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
-  c: fallback(z.string(), "all").default("all"),
-  q: fallback(z.string(), "").default(""),
+  c: z.string().catch("all").default("all"),
+  q: z.string().catch("").default(""),
 });
 
 export const Route = createFileRoute("/collection")({
-  validateSearch: zodValidator(schema),
+  validateSearch: (search) => schema.parse(search),
   head: () => ({
     meta: [
       { title: "Collection — Mauka secondhand fashion" },

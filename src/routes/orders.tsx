@@ -1,5 +1,4 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { Check, PartyPopper } from "lucide-react";
 import { formatINR } from "@/lib/catalog";
@@ -9,7 +8,7 @@ import { btn } from "@/components/mauka/ui";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/orders")({
-  validateSearch: zodValidator(z.object({ placed: fallback(z.string(), "").default("") })),
+  validateSearch: (search) => z.object({ placed: z.string().catch("").default("") }).parse(search),
   head: () => pageHead("Your orders", "Track your Mauka orders from Placed to Delivered."),
   component: Orders,
 });
