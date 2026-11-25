@@ -32,7 +32,7 @@ export function Header() {
         </nav>
         <div className="col-start-3 flex items-center gap-1">
           <button aria-label="Search" onClick={() => setSearchOpen((v) => !v)} className="press grid h-10 w-10 place-items-center rounded-full hover:bg-secondary"><Search className="h-5 w-5" /></button>
-          <Link to={user ? "/account" : "/signin"} search={user ? undefined : { redirect: "/account" }} aria-label="Account" className="press grid h-10 w-10 place-items-center rounded-full hover:bg-secondary"><User className="h-5 w-5" /></Link>
+          <Link to="/account" aria-label="Account" className="press grid h-10 w-10 place-items-center rounded-full hover:bg-secondary"><User className="h-5 w-5" /></Link>
           <Link to="/bag" aria-label={`Shopping bag, ${count} items`} className="press relative grid h-10 w-10 place-items-center rounded-full hover:bg-secondary">
             <ShoppingBag className="h-5 w-5" />
             <span key={count} className="reveal absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-primary px-1 text-[11px] font-bold text-primary-foreground">{count}</span>

@@ -17,6 +17,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionRouteImport } from './routes/collection'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as SellRouteImport } from './routes/sell'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
@@ -61,6 +62,11 @@ const OrdersRoute = OrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SigninRoute = SigninRouteImport.update({
   id: '/signin',
   path: '/signin',
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
   '/orders': typeof OrdersRoute
+  '/sell': typeof SellRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/product/$id': typeof ProductIdRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
   '/orders': typeof OrdersRoute
+  '/sell': typeof SellRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/product/$id': typeof ProductIdRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
   '/orders': typeof OrdersRoute
+  '/sell': typeof SellRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
   '/product/$id': typeof ProductIdRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/collection'
     | '/contact'
     | '/orders'
+    | '/sell'
     | '/signin'
     | '/signup'
     | '/product/$id'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/collection'
     | '/contact'
     | '/orders'
+    | '/sell'
     | '/signin'
     | '/signup'
     | '/product/$id'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/collection'
     | '/contact'
     | '/orders'
+    | '/sell'
     | '/signin'
     | '/signup'
     | '/product/$id'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   CollectionRoute: typeof CollectionRoute
   ContactRoute: typeof ContactRoute
   OrdersRoute: typeof OrdersRoute
+  SellRoute: typeof SellRoute
   SigninRoute: typeof SigninRoute
   SignupRoute: typeof SignupRoute
   ProductIdRoute: typeof ProductIdRoute
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signin': {
       id: '/signin'
       path: '/signin'
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   CollectionRoute: CollectionRoute,
   ContactRoute: ContactRoute,
   OrdersRoute: OrdersRoute,
+  SellRoute: SellRoute,
   SigninRoute: SigninRoute,
   SignupRoute: SignupRoute,
   ProductIdRoute: ProductIdRoute,
