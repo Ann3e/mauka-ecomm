@@ -11,9 +11,12 @@ export function Footer() {
         </div>
         <div className="space-y-2 text-sm">
           <p className="mb-3 font-semibold uppercase tracking-widest opacity-60">Shop</p>
-          <Link to="/collection" search={{ c: "wear" }} className="block hover:underline">Shop Wear</Link>
-          <Link to="/collection" search={{ c: "restyle" }} className="block hover:underline">Explore Restyle</Link>
-          <Link to="/collection" className="block hover:underline">All pieces</Link>
+          <Link to="/re-sell" className="block hover:underline">Re-sell</Link>
+          <Link to="/re-new" className="block hover:underline">Re-new</Link>
+          <Link to="/re-exchange" className="block hover:underline">Re-exchange</Link>
+          <Link to="/re-imagine" className="block hover:underline">Re-imagine</Link>
+          <Link to="/re-source" className="block hover:underline">Re-source</Link>
+          <Link to="/tailor-studio" className="block hover:underline">Tailor Studio</Link>
         </div>
         <div className="space-y-2 text-sm">
           <p className="mb-3 font-semibold uppercase tracking-widest opacity-60">Help & orders</p>
@@ -22,9 +25,6 @@ export function Footer() {
           <Link to="/about" className="block hover:underline">About Mauka</Link>
         </div>
       </div>
-      <p className="border-t border-ink-foreground/15 px-6 py-5 text-center text-xs opacity-60">
-        Student prototype. Accounts, listings and orders are stored in this browser only. Payment and delivery are simulated.
-      </p>
     </footer>
   );
 }

@@ -25,7 +25,7 @@ export const btn = cva(
 export function CollectionTag({ c, className }: { c: Collection; className?: string }) {
   return (
     <span className={cn("inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold", c === "wear" ? "bg-wear text-wear-foreground" : "bg-restyle text-restyle-foreground", className)}>
-      {c === "wear" ? "Wear" : "Restyle"}
+      {c === "wear" ? "Re-sell" : "Re-new"}
     </span>
   );
 }

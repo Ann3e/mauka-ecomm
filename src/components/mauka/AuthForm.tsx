@@ -2,7 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useStore } from "@/lib/store";
 import { isValidEmail } from "@/lib/validation";
-import { btn, DemoNote, field, FieldError, label, Logo } from "./ui";
+import { btn, field, FieldError, label, Logo } from "./ui";
 import { cn } from "@/lib/utils";
 
 const safe = (r: string) => (r.startsWith("/") && !r.startsWith("//") ? r : "/account");
@@ -45,7 +45,6 @@ export function AuthForm({ mode, redirect }: { mode: "signin" | "signup"; redire
           {mode === "signin" ? "New to Mauka? " : "Already have an account? "}
           <Link to={mode === "signin" ? "/signup" : "/signin"} search={{ redirect }} className="font-medium underline">{mode === "signin" ? "Sign up" : "Sign in"}</Link>
         </p>
-        <DemoNote>Browser-local demo account. Try <strong>demo@mauka.in</strong> / <strong>mauka123</strong>. Don’t use a real password.</DemoNote>
       </form>
     </div>
   );

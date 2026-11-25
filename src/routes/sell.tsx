@@ -8,7 +8,7 @@ import { btn, DemoNote, field, FieldError, label } from "@/components/mauka/ui";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/sell")({
-  head: () => pageHead("List an item", "List a pre-loved piece on Mauka as Wear or Restyle."),
+  head: () => pageHead("List an item", "List a pre-loved piece on Mauka as Re-sell or Re-new."),
   component: Sell,
 });
 
@@ -72,10 +72,10 @@ function Sell() {
       <DemoNote className="mt-4">Demo: your listing is saved in this browser only. JPG, PNG or WebP, up to 3 MB each.</DemoNote>
       <form onSubmit={submit} noValidate className="mt-8 space-y-6">
         <fieldset>
-          <legend className={label}>Collection</legend>
+          <legend className={label}>List in</legend>
           <div className="flex gap-3">
             {(["wear", "restyle"] as const).map((c) => (
-              <button type="button" key={c} aria-pressed={f.collection === c} onClick={() => setF({ ...f, collection: c })} className={btn({ variant: f.collection === c ? c : "chip" })}>{c === "wear" ? "Wear" : "Restyle"}</button>
+              <button type="button" key={c} aria-pressed={f.collection === c} onClick={() => setF({ ...f, collection: c })} className={btn({ variant: f.collection === c ? c : "chip" })}>{c === "wear" ? "Re-sell" : "Re-new"}</button>
             ))}
           </div>
           <FieldError msg={err["collection"]} />

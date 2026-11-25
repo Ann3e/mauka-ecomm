@@ -12,10 +12,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mauka — Secondhand fashion in India: Wear or Restyle" },
-      { name: "description", content: "Shop pre-loved Western and Indian clothing ready to wear, or imperfect pieces with usable fabric to Restyle." },
+      { title: "Mauka — Re-sell and Re-new secondhand fashion" },
+      { name: "description", content: "Shop pre-loved Western and Indian clothing through Re-sell, or find imperfect pieces with usable fabric in Re-new." },
       { property: "og:title", content: "Mauka — Make secondhand second nature" },
-      { property: "og:description", content: "Pre-loved clothes to Wear, imperfect ones to Restyle. Prices in ₹, shipped by sellers across India." },
+      { property: "og:description", content: "Pre-loved clothes to Re-sell, imperfect ones to Re-new. Prices in ₹, shipped by sellers across India." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -44,8 +44,8 @@ function Index() {
               Find pieces worth wearing again, and fabric worth getting creative with. Make secondhand second nature.
             </p>
             <div className="reveal mt-8 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
-              <Link to="/collection" search={{ c: "wear" }} className={btn({ size: "lg" })}>Shop Wear <ArrowRight className="h-5 w-5" /></Link>
-              <Link to="/collection" search={{ c: "restyle" }} className={btn({ variant: "outline", size: "lg" })}>Explore Restyle</Link>
+              <Link to="/re-sell" className={btn({ size: "lg" })}>Explore Re-sell <ArrowRight className="h-5 w-5" /></Link>
+              <Link to="/re-new" className={btn({ variant: "outline", size: "lg" })}>Explore Re-new</Link>
             </div>
           </div>
           <div className="zoom-img relative min-h-[420px] overflow-hidden">
@@ -83,7 +83,7 @@ function Index() {
             {(["wear", "restyle"] as const).map((m) => (
               <button key={m} role="tab" aria-selected={mode === m} onClick={() => setMode(m)}
                 className={cn("press flex items-center gap-2 rounded-full px-6 py-2.5 font-medium", mode === m && (m === "wear" ? "bg-wear text-wear-foreground" : "bg-restyle text-restyle-foreground"))}>
-                {m === "wear" ? <Shirt className="h-4 w-4" /> : <Scissors className="h-4 w-4" />}{m === "wear" ? "Wear" : "Restyle"}
+                {m === "wear" ? <Shirt className="h-4 w-4" /> : <Scissors className="h-4 w-4" />}{m === "wear" ? "Re-sell" : "Re-new"}
               </button>
             ))}
           </div>
@@ -99,7 +99,7 @@ function Index() {
             <p className="mt-5 max-w-md text-lg">
               {mode === "wear"
                 ? "Clothes in good shape with honest condition notes from the seller. Wash, wear, repeat."
-                : "Stains, tears or worn patches, shown up close. Sellers say which parts are intact and add ideas to try, for DIY shoppers, design students, tailors and upcyclers."}
+                : "Stains, tears or worn patches, shown up close. Sellers say which parts are intact and add ideas to try, for DIY shoppers, tailors and upcyclers."}
             </p>
             {mode === "restyle" && <p className="mt-4 max-w-md rounded-2xl bg-card/60 p-4 text-sm">“Both knees are torn. The back panels and pockets are intact.” → patchwork pouch, pocket appliqués.</p>}
             <Link to="/product/$id" params={{ id: mode === "wear" ? "straight-jeans" : "torn-knee-jeans" }} className={cn(btn({ variant: "ink" }), "mt-8 self-start")}>

@@ -4,7 +4,7 @@ import { btn } from "@/components/mauka/ui";
 import jeansTorn from "@/assets/jeans-torn.jpg";
 
 export const Route = createFileRoute("/about")({
-  head: () => pageHead("About", "Mauka means chance in Hindi. A secondhand marketplace with two ways to shop: Wear and Restyle."),
+  head: () => pageHead("About", "Mauka means chance in Hindi. A secondhand marketplace for Re-sell, Re-new, Re-exchange and more."),
   component: About,
 });
 
@@ -17,10 +17,9 @@ function About() {
         <img src={jeansTorn} alt="Torn jeans with usable fabric" className="aspect-[4/5] w-full rounded-[2rem] object-cover" />
         <div className="space-y-5 text-lg">
           <p>Mauka is a secondhand fashion marketplace for shoppers in India, with Western and Indian clothing side by side. Sellers list and ship their own pieces.</p>
-          <p><strong className="rounded bg-wear px-1.5 text-wear-foreground">Wear</strong> is for pre-loved clothes ready to wear as-is.</p>
-          <p><strong className="rounded bg-restyle px-1.5 text-restyle-foreground">Restyle</strong> is for clothes with stains, tears or worn areas that still have usable fabric. Sellers show the flaw, explain what’s intact and can suggest ideas to try — a dedicated place for DIY shoppers, design students, tailors and upcyclers.</p>
-          <p className="text-base text-muted-foreground">This is a student prototype: accounts, listings and orders live in your browser, and payment and delivery are simulated.</p>
-          <Link to="/collection" search={{ c: "restyle" }} className={btn({ variant: "restyle", size: "lg" })}>Explore Restyle</Link>
+          <p><strong className="rounded bg-wear px-1.5 text-wear-foreground">Re-sell</strong> is for pre-loved clothes ready for their next favourite person.</p>
+          <p><strong className="rounded bg-restyle px-1.5 text-restyle-foreground">Re-new</strong> is for clothes with stains, tears or worn areas that still have usable fabric. Sellers show the flaw, explain what’s intact and can suggest ideas to try — a dedicated place for DIY shoppers, tailors and upcyclers.</p>
+          <Link to="/re-new" className={btn({ variant: "restyle", size: "lg" })}>Explore Re-new</Link>
         </div>
       </div>
     </div>

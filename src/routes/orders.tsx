@@ -5,7 +5,7 @@ import { Check, PartyPopper } from "lucide-react";
 import { formatINR } from "@/lib/catalog";
 import { ORDER_STEPS, useStore } from "@/lib/store";
 import { pageHead } from "@/lib/head";
-import { btn, DemoNote } from "@/components/mauka/ui";
+import { btn } from "@/components/mauka/ui";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/orders")({
@@ -30,7 +30,6 @@ function Orders() {
         </div>
       )}
       <h2 className="font-display text-5xl">Your orders</h2>
-      <DemoNote className="mt-4">Demo: there’s no delivery integration. Use “Advance status (demo)” to step through Placed → Accepted → Dispatched → Delivered.</DemoNote>
       {!mine.length && <div className="mt-10 text-center"><p className="text-muted-foreground">No orders yet.</p><Link to="/collection" className={cn(btn(), "mt-4")}>Start shopping</Link></div>}
       <div className="mt-8 space-y-6">
         {mine.map((o) => (

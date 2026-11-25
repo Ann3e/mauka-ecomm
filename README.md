@@ -2,15 +2,15 @@
 
 Mauka. — Make secondhand second nature.
 
-Mauka means chance in Hindi. It’s a secondhand fashion marketplace prototype for shoppers in India, featuring both Western and Indian clothing. It gives shoppers two ways to browse:
+Mauka means chance in Hindi. It’s a secondhand fashion marketplace for shoppers in India, featuring both Western and Indian clothing and circular-fashion services.
 
-Wear is for pre-loved clothes ready to wear as-is.
+Re-sell is for pre-loved clothes ready for their next favourite person.
 
-Restyle is for clothes with stains, tears, or worn areas that still have usable fabric. Sellers show the flaw, explain which parts are intact, and can add optional Ideas to try. For example, jeans with torn knees could still provide pockets for appliqués or denim for a patchwork pouch.
+Re-new is for clothes with stains, tears, or worn areas that still have usable fabric. Sellers show the flaw, explain which parts are intact, and can add optional ideas to try.
 
-Restyle is Mauka’s differentiator. It gives DIY shoppers, design students, tailors, and upcyclers a dedicated place to find imperfect garments and assess what they could make from them.
+Re-exchange lets people propose clothing swaps without prices or a shopping cart. Re-imagine offers curated outfit styling boards and a personal upload board. Re-source connects fabric owners with tailor transformation requests and quotes.
 
-The site includes a searchable catalogue, size and material filters, photo galleries, seller condition notes, a shopping bag, sign-up, seller listing forms, and demo checkout with Indian PIN-code validation. Orders can be followed from Placed → Accepted → Dispatched → Delivered. Accounts, listings, and orders are stored in the current browser, and payment and delivery are simulated.
+Tailor Studio includes location-based sample tailor profiles and a browser-local chat. Accounts, listings, exchange requests, tailor messages, and design requests are stored in the current browser; order payment and delivery remain simulated.
 
 make it cool and modern man like impressive and interactive
 

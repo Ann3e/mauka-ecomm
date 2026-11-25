@@ -16,10 +16,20 @@ import { Route as BagRouteImport } from './routes/bag'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionRouteImport } from './routes/collection'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ExchangeRouteImport } from './routes/exchange'
 import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as ReExchangeRouteImport } from './routes/re-exchange'
+import { Route as ReImagineRouteImport } from './routes/re-imagine'
+import { Route as ReNewRouteImport } from './routes/re-new'
+import { Route as ReSellRouteImport } from './routes/re-sell'
+import { Route as ReSourceRouteImport } from './routes/re-source'
+import { Route as ReSourceRequestRouteImport } from './routes/re-source-request'
+import { Route as ResellRouteImport } from './routes/resell'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as TailorStudioRouteImport } from './routes/tailor-studio'
+import { Route as ExchangeRequestListingIdRouteImport } from './routes/exchange-request.$listingId'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -57,9 +67,49 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExchangeRoute = ExchangeRouteImport.update({
+  id: '/exchange',
+  path: '/exchange',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrdersRoute = OrdersRouteImport.update({
   id: '/orders',
   path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReExchangeRoute = ReExchangeRouteImport.update({
+  id: '/re-exchange',
+  path: '/re-exchange',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReImagineRoute = ReImagineRouteImport.update({
+  id: '/re-imagine',
+  path: '/re-imagine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReNewRoute = ReNewRouteImport.update({
+  id: '/re-new',
+  path: '/re-new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReSellRoute = ReSellRouteImport.update({
+  id: '/re-sell',
+  path: '/re-sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReSourceRoute = ReSourceRouteImport.update({
+  id: '/re-source',
+  path: '/re-source',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReSourceRequestRoute = ReSourceRequestRouteImport.update({
+  id: '/re-source-request',
+  path: '/re-source-request',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResellRoute = ResellRouteImport.update({
+  id: '/resell',
+  path: '/resell',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SellRoute = SellRouteImport.update({
@@ -77,6 +127,17 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TailorStudioRoute = TailorStudioRouteImport.update({
+  id: '/tailor-studio',
+  path: '/tailor-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExchangeRequestListingIdRoute =
+  ExchangeRequestListingIdRouteImport.update({
+    id: '/exchange-request/$listingId',
+    path: '/exchange-request/$listingId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProductIdRoute = ProductIdRouteImport.update({
   id: '/product/$id',
   path: '/product/$id',
@@ -91,10 +152,20 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/exchange': typeof ExchangeRoute
   '/orders': typeof OrdersRoute
+  '/re-exchange': typeof ReExchangeRoute
+  '/re-imagine': typeof ReImagineRoute
+  '/re-new': typeof ReNewRoute
+  '/re-sell': typeof ReSellRoute
+  '/re-source': typeof ReSourceRoute
+  '/re-source-request': typeof ReSourceRequestRoute
+  '/resell': typeof ResellRoute
   '/sell': typeof SellRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/tailor-studio': typeof TailorStudioRoute
+  '/exchange-request/$listingId': typeof ExchangeRequestListingIdRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
@@ -105,10 +176,20 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/exchange': typeof ExchangeRoute
   '/orders': typeof OrdersRoute
+  '/re-exchange': typeof ReExchangeRoute
+  '/re-imagine': typeof ReImagineRoute
+  '/re-new': typeof ReNewRoute
+  '/re-sell': typeof ReSellRoute
+  '/re-source': typeof ReSourceRoute
+  '/re-source-request': typeof ReSourceRequestRoute
+  '/resell': typeof ResellRoute
   '/sell': typeof SellRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/tailor-studio': typeof TailorStudioRoute
+  '/exchange-request/$listingId': typeof ExchangeRequestListingIdRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
@@ -120,10 +201,20 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/exchange': typeof ExchangeRoute
   '/orders': typeof OrdersRoute
+  '/re-exchange': typeof ReExchangeRoute
+  '/re-imagine': typeof ReImagineRoute
+  '/re-new': typeof ReNewRoute
+  '/re-sell': typeof ReSellRoute
+  '/re-source': typeof ReSourceRoute
+  '/re-source-request': typeof ReSourceRequestRoute
+  '/resell': typeof ResellRoute
   '/sell': typeof SellRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/tailor-studio': typeof TailorStudioRoute
+  '/exchange-request/$listingId': typeof ExchangeRequestListingIdRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
@@ -136,10 +227,20 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/collection'
     | '/contact'
+    | '/exchange'
     | '/orders'
+    | '/re-exchange'
+    | '/re-imagine'
+    | '/re-new'
+    | '/re-sell'
+    | '/re-source'
+    | '/re-source-request'
+    | '/resell'
     | '/sell'
     | '/signin'
     | '/signup'
+    | '/tailor-studio'
+    | '/exchange-request/$listingId'
     | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -150,10 +251,20 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/collection'
     | '/contact'
+    | '/exchange'
     | '/orders'
+    | '/re-exchange'
+    | '/re-imagine'
+    | '/re-new'
+    | '/re-sell'
+    | '/re-source'
+    | '/re-source-request'
+    | '/resell'
     | '/sell'
     | '/signin'
     | '/signup'
+    | '/tailor-studio'
+    | '/exchange-request/$listingId'
     | '/product/$id'
   id:
     | '__root__'
@@ -164,10 +275,20 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/collection'
     | '/contact'
+    | '/exchange'
     | '/orders'
+    | '/re-exchange'
+    | '/re-imagine'
+    | '/re-new'
+    | '/re-sell'
+    | '/re-source'
+    | '/re-source-request'
+    | '/resell'
     | '/sell'
     | '/signin'
     | '/signup'
+    | '/tailor-studio'
+    | '/exchange-request/$listingId'
     | '/product/$id'
   fileRoutesById: FileRoutesById
 }
@@ -179,10 +300,20 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   CollectionRoute: typeof CollectionRoute
   ContactRoute: typeof ContactRoute
+  ExchangeRoute: typeof ExchangeRoute
   OrdersRoute: typeof OrdersRoute
+  ReExchangeRoute: typeof ReExchangeRoute
+  ReImagineRoute: typeof ReImagineRoute
+  ReNewRoute: typeof ReNewRoute
+  ReSellRoute: typeof ReSellRoute
+  ReSourceRoute: typeof ReSourceRoute
+  ReSourceRequestRoute: typeof ReSourceRequestRoute
+  ResellRoute: typeof ResellRoute
   SellRoute: typeof SellRoute
   SigninRoute: typeof SigninRoute
   SignupRoute: typeof SignupRoute
+  TailorStudioRoute: typeof TailorStudioRoute
+  ExchangeRequestListingIdRoute: typeof ExchangeRequestListingIdRoute
   ProductIdRoute: typeof ProductIdRoute
 }
 
@@ -237,11 +368,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exchange': {
+      id: '/exchange'
+      path: '/exchange'
+      fullPath: '/exchange'
+      preLoaderRoute: typeof ExchangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/orders': {
       id: '/orders'
       path: '/orders'
       fullPath: '/orders'
       preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/re-exchange': {
+      id: '/re-exchange'
+      path: '/re-exchange'
+      fullPath: '/re-exchange'
+      preLoaderRoute: typeof ReExchangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/re-imagine': {
+      id: '/re-imagine'
+      path: '/re-imagine'
+      fullPath: '/re-imagine'
+      preLoaderRoute: typeof ReImagineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/re-new': {
+      id: '/re-new'
+      path: '/re-new'
+      fullPath: '/re-new'
+      preLoaderRoute: typeof ReNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/re-sell': {
+      id: '/re-sell'
+      path: '/re-sell'
+      fullPath: '/re-sell'
+      preLoaderRoute: typeof ReSellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/re-source': {
+      id: '/re-source'
+      path: '/re-source'
+      fullPath: '/re-source'
+      preLoaderRoute: typeof ReSourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/re-source-request': {
+      id: '/re-source-request'
+      path: '/re-source-request'
+      fullPath: '/re-source-request'
+      preLoaderRoute: typeof ReSourceRequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resell': {
+      id: '/resell'
+      path: '/resell'
+      fullPath: '/resell'
+      preLoaderRoute: typeof ResellRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sell': {
@@ -265,6 +452,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tailor-studio': {
+      id: '/tailor-studio'
+      path: '/tailor-studio'
+      fullPath: '/tailor-studio'
+      preLoaderRoute: typeof TailorStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exchange-request/$listingId': {
+      id: '/exchange-request/$listingId'
+      path: '/exchange-request/$listingId'
+      fullPath: '/exchange-request/$listingId'
+      preLoaderRoute: typeof ExchangeRequestListingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$id': {
       id: '/product/$id'
       path: '/product/$id'
@@ -283,10 +484,20 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   CollectionRoute: CollectionRoute,
   ContactRoute: ContactRoute,
+  ExchangeRoute: ExchangeRoute,
   OrdersRoute: OrdersRoute,
+  ReExchangeRoute: ReExchangeRoute,
+  ReImagineRoute: ReImagineRoute,
+  ReNewRoute: ReNewRoute,
+  ReSellRoute: ReSellRoute,
+  ReSourceRoute: ReSourceRoute,
+  ReSourceRequestRoute: ReSourceRequestRoute,
+  ResellRoute: ResellRoute,
   SellRoute: SellRoute,
   SigninRoute: SigninRoute,
   SignupRoute: SignupRoute,
+  TailorStudioRoute: TailorStudioRoute,
+  ExchangeRequestListingIdRoute: ExchangeRequestListingIdRoute,
   ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport

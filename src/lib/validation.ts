@@ -17,7 +17,7 @@ export type ListingInput = {
 export function validateListing(v: ListingInput): Record<string, string> {
   const e: Record<string, string> = {};
   if (!v.title.trim()) e["title"] = "Add a title.";
-  if (!v.collection) e["collection"] = "Choose Wear or Restyle.";
+  if (!v.collection) e["collection"] = "Choose Re-sell or Re-new.";
   if (!v.type) e["type"] = "Choose a garment type.";
   if (!v.material) e["material"] = "Choose a material.";
   if (!v.size.trim()) e["size"] = "Add the listed size.";
@@ -29,7 +29,7 @@ export function validateListing(v: ListingInput): Record<string, string> {
   if (v.extraPhotos > 3) e["extraPhotos"] = "Up to three extra photos.";
   if (v.collection === "restyle") {
     if (v.flawNote.trim().length < 10) e["flawNote"] = "Describe the flaw specifically (where and how big).";
-    if (!v.flawPhoto) e["flawPhoto"] = "Restyle listings need a close-up photo of the flaw.";
+    if (!v.flawPhoto) e["flawPhoto"] = "Re-new listings need a close-up photo of the flaw.";
     if (!v.usable.trim()) e["usable"] = "Say which parts are still usable.";
   }
   return e;

@@ -6,13 +6,16 @@ import { Logo } from "./ui";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/collection", label: "Collection" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/re-sell", label: "Re-sell" },
+  { to: "/re-new", label: "Re-new" },
+  { to: "/re-exchange", label: "Re-exchange" },
+  { to: "/re-imagine", label: "Re-imagine" },
+  { to: "/re-source", label: "Re-source" },
+  { to: "/tailor-studio", label: "Tailor Studio" },
 ] as const;
 
 export function Header() {
-  const { bag, user, ready } = useStore();
+  const { bag, ready } = useStore();
   const [searchOpen, setSearchOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [q, setQ] = useState("");
@@ -22,10 +25,10 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6">
         <Link to="/" aria-label="Mauka home"><Logo /></Link>
-        <nav className="hidden justify-center gap-8 md:flex" aria-label="Main">
+        <nav className="hidden justify-center gap-3 lg:flex xl:gap-5" aria-label="Main">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: n.to === "/" }}
-              className="relative py-1 text-sm font-medium after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:after:scale-x-100 data-[status=active]:after:scale-x-100">
+              className="relative whitespace-nowrap py-1 text-xs font-medium after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:after:scale-x-100 data-[status=active]:after:scale-x-100 xl:text-sm">
               {n.label}
             </Link>
           ))}
@@ -37,11 +40,11 @@ export function Header() {
             <ShoppingBag className="h-5 w-5" />
             <span key={count} className="reveal absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-primary px-1 text-[11px] font-bold text-primary-foreground">{count}</span>
           </Link>
-          <button aria-label="Menu" onClick={() => setMenu((v) => !v)} className="press grid h-10 w-10 place-items-center rounded-full hover:bg-secondary md:hidden">{menu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+          <button aria-label="Menu" onClick={() => setMenu((v) => !v)} className="press grid h-10 w-10 place-items-center rounded-full hover:bg-secondary lg:hidden">{menu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
         </div>
       </div>
       {menu && (
-        <nav className="reveal border-t border-border px-4 py-3 md:hidden" aria-label="Mobile">
+        <nav className="reveal border-t border-border px-4 py-3 lg:hidden" aria-label="Mobile">
           {nav.map((n) => <Link key={n.to} to={n.to} onClick={() => setMenu(false)} className="block py-2 text-lg font-medium">{n.label}</Link>)}
         </nav>
       )}

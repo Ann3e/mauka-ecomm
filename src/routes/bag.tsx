@@ -30,7 +30,7 @@ function BagPage() {
         <ShoppingBag className="mx-auto h-12 w-12 text-primary" />
         <h1 className="mt-4 font-display text-5xl">Your bag is empty</h1>
         <p className="mt-2 text-muted-foreground">Every piece is one of one. Grab it before someone else does.</p>
-        <Link to="/collection" className={cn(btn({ size: "lg" }), "mt-8")}>Browse the collection</Link>
+        <Link to="/re-sell" className={cn(btn({ size: "lg" }), "mt-8")}>Browse Re-sell</Link>
       </div>
     );
   return (

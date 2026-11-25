@@ -21,7 +21,7 @@ function Checkout() {
   if (!ready) return <div className="py-24 text-center text-muted-foreground">Loading…</div>;
   if (!user) return <Navigate to="/signin" search={{ redirect: "/checkout" }} replace />;
   const items = bag.map((id) => products.find((p) => p.id === id)).filter((p) => !!p);
-  if (!items.length) return <div className="mx-auto max-w-lg py-24 text-center"><p className="font-display text-4xl">Nothing to check out.</p><Link to="/collection" className={cn(btn(), "mt-6")}>Browse</Link></div>;
+  if (!items.length) return <div className="mx-auto max-w-lg py-24 text-center"><p className="font-display text-4xl">Nothing to check out.</p><Link to="/re-sell" className={cn(btn(), "mt-6")}>Browse Re-sell</Link></div>;
   const subtotal = items.reduce((a, p) => a + p.price, 0);
 
   const submit = (e: React.FormEvent) => {

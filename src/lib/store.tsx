@@ -10,9 +10,73 @@ export type Order = {
   step: number; history: number[]; placedAt: number;
 };
 
-type State = { users: User[]; session: string | null; bag: string[]; listings: Product[]; orders: Order[] };
+export type ExchangeProposal = {
+  id: string;
+  email: string;
+  offeredProductId: string;
+  offeredTitle: string;
+  wantedTitle: string;
+  description: string;
+  city: string;
+  status: "Open" | "Accepted";
+  createdAt: number;
+};
+
+export type ExchangeRequestStatus = "Pending" | "Approved" | "Rejected";
+export type ExchangeRequest = {
+  id: string;
+  listingId: string;
+  listingTitle: string;
+  listingImage: string;
+  ownerName: string;
+  ownerEmail: string;
+  requesterName: string;
+  requesterEmail: string;
+  outfitName: string;
+  outfitPhoto: string;
+  category: string;
+  size: string;
+  condition: string;
+  description: string;
+  message: string;
+  interestedIn: string;
+  status: ExchangeRequestStatus;
+  createdAt: number;
+};
+
+export type SourceRequestStatus = "Pending" | "Accepted" | "Proposal Received" | "Tailor Selected";
+export type SourceRequest = {
+  id: string;
+  email: string;
+  sourcePhoto: string;
+  material: string;
+  inspirationPhoto: string;
+  description: string;
+  requirements: string;
+  status: SourceRequestStatus;
+  tailorId?: string;
+  tailorName?: string;
+  proposedPrice?: number;
+  estimatedDays?: number;
+  createdAt: number;
+};
+
+export type TailorMessage = { id: string; from: "user" | "tailor"; text: string; createdAt: number };
+export type TailorChat = { tailorId: string; email: string; messages: TailorMessage[] };
+
+type State = {
+  users: User[];
+  session: string | null;
+  bag: string[];
+  listings: Product[];
+  orders: Order[];
+  exchangeProposals: ExchangeProposal[];
+  tailorChats: TailorChat[];
+  exchangeRequests: ExchangeRequest[];
+  sourceRequests: SourceRequest[];
+};
 const KEY = "mauka-demo-v1";
-const empty: State = { users: [{ name: "Demo Shopper", email: "demo@mauka.in", password: "mauka123" }], session: null, bag: [], listings: [], orders: [] };
+const empty: State = { users: [{ name: "Demo Shopper", email: "demo@mauka.in", password: "mauka123" }], session: null, bag: [], listings: [], orders: [], exchangeProposals: [], tailorChats: [], exchangeRequests: [], sourceRequests: [] };
 
 type Ctx = State & {
   ready: boolean;
@@ -27,6 +91,13 @@ type Ctx = State & {
   addListing: (p: Product) => void;
   placeOrder: (address: Order["address"]) => { order?: Order; soldItems?: Product[] };
   advanceOrder: (id: string) => void;
+  createExchangeProposal: (proposal: Omit<ExchangeProposal, "id" | "email" | "status" | "createdAt">) => void;
+  acceptExchangeProposal: (id: string) => void;
+  sendTailorMessage: (tailorId: string, text: string) => void;
+  createExchangeRequest: (request: Omit<ExchangeRequest, "id" | "requesterEmail" | "status" | "createdAt">) => void;
+  updateExchangeRequest: (id: string, status: ExchangeRequestStatus) => void;
+  createSourceRequest: (request: Omit<SourceRequest, "id" | "email" | "status" | "createdAt">) => void;
+  updateSourceRequest: (id: string, update: Partial<Pick<SourceRequest, "status" | "tailorId" | "tailorName" | "proposedPrice" | "estimatedDays">>) => void;
 };
 const StoreCtx = createContext<Ctx | null>(null);
 
@@ -73,6 +144,62 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       return { order };
     },
     advanceOrder: (id) => setS((x) => ({ ...x, orders: x.orders.map((o) => o.id === id && o.step < 3 ? { ...o, step: o.step + 1, history: [...o.history, Date.now()] } : o) })),
+    createExchangeProposal: (proposal) => setS((x) => ({
+      ...x,
+      exchangeProposals: [{
+        ...proposal,
+        id: "EX-" + Date.now().toString(36).toUpperCase(),
+        email: x.session ?? "guest",
+        status: "Open",
+        createdAt: Date.now(),
+      }, ...x.exchangeProposals],
+    })),
+    acceptExchangeProposal: (id) => setS((x) => ({
+      ...x,
+      exchangeProposals: x.exchangeProposals.map((proposal) => proposal.id === id ? { ...proposal, status: "Accepted" } : proposal),
+    })),
+    sendTailorMessage: (tailorId, text) => setS((x) => {
+      const email = x.session ?? "guest";
+      const existing = x.tailorChats.find((chat) => chat.tailorId === tailorId && chat.email === email);
+      const message: TailorMessage = { id: "MSG-" + Date.now().toString(36), from: "user", text, createdAt: Date.now() };
+      const nextChat: TailorChat = existing
+        ? { ...existing, messages: [...existing.messages, message] }
+        : { tailorId, email, messages: [message] };
+      return {
+        ...x,
+        tailorChats: existing
+          ? x.tailorChats.map((chat) => chat.tailorId === tailorId && chat.email === email ? nextChat : chat)
+          : [nextChat, ...x.tailorChats],
+      };
+    }),
+    createExchangeRequest: (request) => setS((x) => ({
+      ...x,
+      exchangeRequests: [{
+        ...request,
+        id: "ER-" + Date.now().toString(36).toUpperCase(),
+        requesterEmail: x.session ?? "guest",
+        status: "Pending",
+        createdAt: Date.now(),
+      }, ...x.exchangeRequests],
+    })),
+    updateExchangeRequest: (id, status) => setS((x) => ({
+      ...x,
+      exchangeRequests: x.exchangeRequests.map((request) => request.id === id ? { ...request, status } : request),
+    })),
+    createSourceRequest: (request) => setS((x) => ({
+      ...x,
+      sourceRequests: [{
+        ...request,
+        id: "RS-" + Date.now().toString(36).toUpperCase(),
+        email: x.session ?? "guest",
+        status: "Pending",
+        createdAt: Date.now(),
+      }, ...x.sourceRequests],
+    })),
+    updateSourceRequest: (id, update) => setS((x) => ({
+      ...x,
+      sourceRequests: x.sourceRequests.map((request) => request.id === id ? { ...request, ...update } : request),
+    })),
   };
   return <StoreCtx.Provider value={value}>{children}</StoreCtx.Provider>;
 }

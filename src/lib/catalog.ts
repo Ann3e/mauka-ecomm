@@ -52,7 +52,7 @@ export const SEED: Product[] = [
     photos: [{ src: jeansWear, label: "Front" }, { src: jeansWear, label: "Waistband detail (crop)" }], createdAt: d(1), sample: true,
   },
   {
-    id: "torn-knee-jeans", title: "Blue jeans with torn knees", collection: "restyle", type: "Jeans", material: "Cotton denim", size: "30", price: 390,
+    id: "torn-knee-jeans", title: "Blue jeans with torn knees", collection: "restyle", type: "Jeans", material: "Cotton denim", size: "30", price: 220,
     description: "Light-wash straight jeans with contrast stitching and five pockets.",
     condition: "Worn often. Both knees are torn through and the threads are fraying. No stains.",
     flawNote: "Both knees are torn, roughly 8 cm across each.",
@@ -67,7 +67,7 @@ export const SEED: Product[] = [
     photos: [{ src: kurta, label: "Front" }], createdAt: d(3), sample: true,
   },
   {
-    id: "zari-saree", title: "Silk saree with a torn border", collection: "restyle", type: "Saree", material: "Silk", size: "One size", price: 1450,
+    id: "zari-saree", title: "Silk saree with a torn border", collection: "restyle", type: "Saree", material: "Silk", size: "One size", price: 650,
     description: "Deep purple silk saree with a woven gold zari border and pallu.",
     condition: "Stored for years. A small tear on the border near one end; the body has no stains.",
     flawNote: "A 4 cm tear along the zari border, about 30 cm from the end.",
@@ -94,7 +94,7 @@ export const SEED: Product[] = [
     photos: [{ src: dupatta, label: "Draped" }], createdAt: d(7), sample: true,
   },
   {
-    id: "wool-blazer", title: "Brown wool blazer, stained lapel", collection: "restyle", type: "Blazer", material: "Wool", size: "L", price: 990,
+    id: "wool-blazer", title: "Brown wool blazer, stained lapel", collection: "restyle", type: "Blazer", material: "Wool", size: "L", price: 420,
     description: "Single-breasted vintage wool blazer with notch lapels and flap pockets.",
     condition: "Structure is good, lining intact. A faded stain on the left lapel did not come out with dry cleaning.",
     flawNote: "A faded 3 cm stain on the left lapel.",

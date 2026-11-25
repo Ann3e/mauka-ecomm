@@ -32,7 +32,7 @@ function ProductPage() {
     return (
       <div className="mx-auto max-w-xl px-6 py-24 text-center">
         <p className="font-display text-5xl">{ready ? "This piece isn’t here." : "Loading…"}</p>
-        {ready && <Link to="/collection" className={cn(btn(), "mt-6")}>Back to the collection</Link>}
+        {ready && <Link to="/re-sell" className={cn(btn(), "mt-6")}>Back to Re-sell</Link>}
       </div>
     );
   }
@@ -45,7 +45,7 @@ function ProductPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-      <Link to="/collection" search={{ c: p.collection }} className="inline-flex items-center gap-2 text-sm font-medium hover:underline"><ArrowLeft className="h-4 w-4" />Back to {p.collection === "wear" ? "Wear" : "Restyle"}</Link>
+      <Link to={p.collection === "wear" ? "/re-sell" : "/re-new"} className="inline-flex items-center gap-2 text-sm font-medium hover:underline"><ArrowLeft className="h-4 w-4" />Back to {p.collection === "wear" ? "Re-sell" : "Re-new"}</Link>
       <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
         <div className="flex flex-col-reverse gap-4 sm:flex-row">
           <div className="flex gap-3 sm:flex-col" role="tablist" aria-label="Photos">
@@ -106,9 +106,10 @@ function ProductPage() {
               {p.flawNote && <div><h2 className="flex items-center gap-2 font-semibold"><AlertTriangle className="h-4 w-4" />The flaw</h2><p className="mt-1">{p.flawNote}</p></div>}
               {p.usable && <div><h2 className="flex items-center gap-2 font-semibold"><Scissors className="h-4 w-4" />Usable parts</h2><p className="mt-1">{p.usable}</p></div>}
               {p.ideas && <div><h2 className="flex items-center gap-2 font-semibold"><Lightbulb className="h-4 w-4" />Ideas to try</h2><p className="mt-1">{p.ideas}</p><p className="mt-1 text-xs opacity-75">Inspiration from the seller, not a promise of the result.</p></div>}
+              <Link to="/tailor-studio" className={cn(btn({ variant: "ink", size: "md" }), "mt-2")}>Contact a tailor <Scissors className="h-4 w-4" /></Link>
             </section>
           )}
-          {p.sample && <DemoNote className="mt-4">Sample listing for this prototype. Photos are illustrative of the garment type.</DemoNote>}
+          {p.sample && <DemoNote className="mt-4">Sample listing. Photos are illustrative of the garment type.</DemoNote>}
         </div>
       </div>
 
